@@ -1,3 +1,6 @@
+// This fetch the delta value of the clock and adjust the Time.
+
+
 package server;
 
 import java.rmi.Remote;

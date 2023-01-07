@@ -1,6 +1,6 @@
 // This file includes the client side implementation of the algorithm
 // 5 server/ slave machines time is fetched and the time is adjusted.
-// time difference and the average of them is computed and adjusted
+// time difference and the average of them is computed and adjusted.
 
 
 package client;
