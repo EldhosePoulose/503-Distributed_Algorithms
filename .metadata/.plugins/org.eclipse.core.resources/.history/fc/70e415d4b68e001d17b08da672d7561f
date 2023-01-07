@@ -4,8 +4,7 @@
 
 
 package client;
-import java.rmi.*;
-import java.rmi.registry.*;
+import jav.rmi.*;
 import static global.berkeleyParams.dateformatter;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;

@@ -1,7 +1,5 @@
 package server;
 
-import java.rmi.*;
-import java.rmi.registry.*;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.time.LocalTime;
