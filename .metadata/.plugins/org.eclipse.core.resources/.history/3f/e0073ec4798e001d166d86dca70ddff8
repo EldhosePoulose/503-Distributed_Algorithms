@@ -1,0 +1,7 @@
+// This file includes the client side implementation of the algorithm
+package client;
+
+public class masterClock {
+	
+
+}
