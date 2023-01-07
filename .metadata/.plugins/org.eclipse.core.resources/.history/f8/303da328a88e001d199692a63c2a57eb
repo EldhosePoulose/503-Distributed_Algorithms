@@ -1,0 +1,25 @@
+//
+package global;
+
+import java.time.format.DateTimeFormatter;
+
+public interface berkeleyParams {
+	
+	public final String servername01 = "localhost";
+	public final int serverport01 = 1501;
+	
+	public final String SERVER_NAME_02 = "localhost";
+	public final int SERVER_PORT_02 = 1502;
+	
+	public final String SERVER_NAME_03 = "localhost";
+	public final int SERVER_PORT_03 = 1503;
+
+	public final String SERVER_NAME_04 = "localhost";
+	public final int SERVER_PORT_04 = 1504;
+	
+	public final String SERVER_NAME_05 = "localhost";
+	public final int SERVER_PORT_05 = 1505;
+	
+	public final DateTimeFormatter dateformatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+
+}

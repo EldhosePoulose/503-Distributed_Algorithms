@@ -1,0 +1,24 @@
+package server;
+
+import static global.berkeleyParams.dateformatter;
+import java.rmi.registry.LocateRegistry;
+import java.rmi.registry.Registry;
+import java.time.LocalTime;
+import global.berkeleyParams;
+
+// Initiate the Slave 01
+			
+public class slave01 {
+
+	public static void main(String[] args) {
+		try {
+			clockServer ts01 = new clockServerImplementation(LocalTime.parse("12:01:10", dateformatter));
+			Registry registry01 = LocateRegistry.createRegistry(berkeleyParams.serverport01);
+			registry01.rebind(clockServerImplementation.class.getSimpleName(), ts01);
+			System.out.println(String.format("Machine 1 started, port: %s", berkeleyParams.serverport01));
+		} catch (Exception ex) {
+			System.out.println(ex);
+		}
+	}
+
+}

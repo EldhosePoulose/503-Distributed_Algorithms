@@ -1,0 +1,5 @@
+package clockServer;
+
+public interface clockServer {
+
+}

@@ -1,0 +1,67 @@
+// This file includes the client side implementation of the algorithm
+package client;
+
+import static global.berkeleyParams.dateformatter;
+import java.rmi.registry.LocateRegistry;
+import java.rmi.registry.Registry;
+import java.time.LocalTime;
+import java.util.ArrayList;
+import global.berkeleyParams;
+import server.clockServer;
+import server.clockServerImplementation;
+
+//master/Client Side Implementation
+
+public class masterClock {
+
+	public static void main(String[] args) {
+		try {
+			var slavetimes = new ArrayList<LocalTime>();
+
+			LocalTime locTime = LocalTime.parse("12:00:00", berkeleyParams.dateformatter);
+			slavetimes.add(locTime);
+			System.out.println("Local time: " + berkeleyParams.dateformatter(locTime));
+
+			// Connect machine 1
+			Registry registry01 = LocateRegistry.getRegistry(berkeleyParams.SERVER_NAME_01, berkeleyParams.SERVER_PORT_01);
+			TimeServer ts01 = (clockServer) registry1.lookup(TimeServerImpl.class.getSimpleName());
+			System.out.println("Connection to machine 1 established successfuly.");
+			LocalTime TimeServer1 = ts1.getTime();
+			slavetimes.add(TimeServer1);
+			System.out.println("Machine 1 time: " + formatter.format(TimeServer1));
+
+			// Connect machine 2
+			Registry registry2 = LocateRegistry.getRegistry(AppConstants.SERVER_NAME_2, AppConstants.SERVER_PORT_2);
+			TimeServer ts2 = (TimeServer) registry2.lookup(TimeServerImpl.class.getSimpleName());
+			System.out.println("Connection to machine 2 established successfuly.");
+			LocalTime TimeServer2 = ts2.getTime();
+			slavetimes.add(TimeServer2);
+			System.out.println("Machine 2 time: " + formatter.format(TimeServer2));
+
+			// Connect machine 3
+
+
+			var nanoLocal = locTime.toNanoOfDay();
+			var diffMachine1 = TimeServer1.toNanoOfDay() - nanoLocal;
+			var diffMachine2 = TimeServer2.toNanoOfDay() - nanoLocal;
+			var diffMachine3 = TimeServer3.toNanoOfDay() - nanoLocal;
+			var avgDiff = (diffMachine1 + diffMachine2 + diffMachine3) / 3; 
+
+			// Assign new time
+			ts1.adjustTime(locTime, avgDiff);
+			ts2.adjustTime(locTime, avgDiff);
+			ts3.adjustTime(locTime, avgDiff);
+			locTime = locTime.plusNanos(avgDiff);
+			System.out.println("Time was adjusted successfuly");
+
+			// Verifying the time on all machines
+			System.out.println("Local time: " + formatter.format(locTime));
+			System.out.println("Machine 1 time: " + formatter.format(ts1.getTime()));
+			System.out.println("Machine 2 time: " + formatter.format(ts2.getTime()));
+			System.out.println("Machine 3 time: " + formatter.format(ts3.getTime()));
+		} catch (Exception ex) {
+			System.out.println(ex);
+		}
+	}
+
+}

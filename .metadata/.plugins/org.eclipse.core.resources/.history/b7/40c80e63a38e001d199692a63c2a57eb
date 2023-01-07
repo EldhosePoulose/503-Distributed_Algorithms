@@ -1,0 +1,30 @@
+package server;
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
+import java.time.LocalTime;
+import global.berkeleyParams;
+
+public class clockServerImplementation extends UnicastRemoteObject implements TimeServer {
+	
+	private LocalTime time;
+	public clockServerImplementation(LocalTime time) throws RemoteException {
+		this.time = time;
+	
+	}
+	
+	@Override
+	public LocalTime getTime() throws RemoteException {
+		return time;
+
+	@Override
+	public void adjustTime(LocalTime slaveTime, long delta) throws RemoteException {
+		long localTime = slaveTime.toSecondOfDay();
+		long serverTime = this.getTime().toSecondOfDay();
+		var deltaTime = serverTime - localTimeNanos;
+		newDelta = newDelta * -1 + delta + serverTime;
+		LocalTime newLocalTime = LocalTime.ofSecondOfDay(newDelta);
+		System.out.println("New time: " + AppConstants.formatter.format(newLocalTime));
+		this.time = newLocalTime;
+	}		
+		
+}
