@@ -94,12 +94,12 @@ public class masterClock {
 			System.out.println("Successfully Updated the Clock...");
 
 			// Verifying the time on all machines
-			System.out.println("Master/Local Time: " + dateformatter.format(masterTime));
-			System.out.println("new time at slave 01 is: " + dateformatter.format(ts01.getTime()));
-			System.out.println("new time at slave 02 is: " + dateformatter.format(ts02.getTime()));
-			System.out.println("new time at slave 03 is: " + dateformatter.format(ts03.getTime()));
-			System.out.println("new time at slave 04 is: " + dateformatter.format(ts04.getTime()));
-			System.out.println("new time at slave 05 is: " + dateformatter.format(ts05.getTime()));
+			System.out.println("New Master/Local Time: " + dateformatter.format(masterTime));
+			System.out.println("New time at slave 01 is: " + dateformatter.format(ts01.getTime()));
+			System.out.println("New time at slave 02 is: " + dateformatter.format(ts02.getTime()));
+			System.out.println("New time at slave 03 is: " + dateformatter.format(ts03.getTime()));
+			System.out.println("New time at slave 04 is: " + dateformatter.format(ts04.getTime()));
+			System.out.println("New time at slave 05 is: " + dateformatter.format(ts05.getTime()));
 
 		} catch (Exception ex) {
 			System.out.println(ex);
