@@ -14,8 +14,7 @@ public class clockServerImplementation extends UnicastRemoteObject implements cl
 	@Override
 	public LocalTime getTime() throws RemoteException {
 		return time;
-	}
-	
+
 	@Override
 	public void adjustTime(LocalTime slaveTime, long delta) throws RemoteException {
 		long localTime = slaveTime.toSecondOfDay(); // fetch the time from slaves in seconds

@@ -22,14 +22,11 @@ public class masterClock {
 	public static void main(String[] args) {
 		try {
 			var slavetimes = new ArrayList<LocalTime>();
-			
+
 			LocalTime masterTime = LocalTime.parse("12:00:00", berkeleyParams.dateformatter);
 			slavetimes.add(masterTime);
 			System.out.println("Local time: " + dateformatter.format(masterTime));
-			
-			System.out.println("###### Berkeley Algorithm ######");
-			System.out.println("###### Fetched the Master Clock ######");
-			
+
 			// Connect to slave 01 and get Time
 			Registry registry01 = LocateRegistry.getRegistry(berkeleyParams.servername01, berkeleyParams.serverport01);
 			clockServer ts01 = (clockServer) registry01.lookup(clockServerImplementation.class.getSimpleName());
@@ -69,11 +66,11 @@ public class masterClock {
 			System.out.println("Connected successfully to: SLAVE 05");
 			LocalTime slaveTime05 = ts05.getTime();
 			slavetimes.add(slaveTime05);
-			System.out.println("time at slave 05 is: " + dateformatter.format(slaveTime05));
+			System.out.println("time at slave 05 is: " + formatter.format(slaveTime05));
 
 // COMPUTATION of TIME DIFFERENCE AND AVERAGING THEM
 			
-			var localTimeSeconds = masterTime.toSecondOfDay();
+			var localTimeSeconds = locTime.toSecondOfDay();
 			
 			var delta01 = slaveTime01.toSecondOfDay() - localTimeSeconds;
 			var delta02 = slaveTime02.toSecondOfDay() - localTimeSeconds;
@@ -82,7 +79,7 @@ public class masterClock {
 			var delta05 = slaveTime05.toSecondOfDay() - localTimeSeconds;
 			
 			var delta_average = (delta01 + delta02 + delta03 + delta04 + delta05) / 5; 
-			System.out.println("Average Delta Computed is: "+delta_average+" seconds");
+			System.out.println("Average Delta Computed..");
 
 			// Assign new time
 			ts01.adjustTime(masterTime, delta_average);

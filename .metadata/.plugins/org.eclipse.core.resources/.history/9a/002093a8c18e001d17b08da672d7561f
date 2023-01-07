@@ -23,7 +23,7 @@ public class clockServerImplementation extends UnicastRemoteObject implements cl
 		var deltaTime = serverTime - localTime; // compute the difference in time between master and slave
 		deltaTime = deltaTime * -1 + delta + serverTime;
 		LocalTime updatedClock = LocalTime.ofSecondOfDay(deltaTime);
-		System.out.println("Updated Time is: " + berkeleyParams.dateformatter.format(updatedClock));
+		System.out.println("Updated Time is: " + dateformatter.format(updatedClock));
 		this.time = updatedClock;
 	}		
 		

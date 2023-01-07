@@ -6347,3 +6347,8 @@ java.util.zip.ZipException: zip END header not found
 	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:161)
 	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:255)
 	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.eclipse.core.resources 2 2 2023-01-07 20:19:09.410
+!MESSAGE Save operation warnings.
+!SUBENTRY 1 org.eclipse.core.resources 2 234 2023-01-07 20:19:09.458
+!MESSAGE The project description file (.project) for 'berkeley_algorithm' was missing.  This file contains important information about the project.  A new project description file has been created, but some information about the project may have been lost.
