@@ -1,6 +1,7 @@
 // This file includes the client side implementation of the algorithm
 // 5 server/ slave machines time is fetched and the time is adjusted.
 // time difference and the average of them is computed and adjusted.
+//
 
 
 package client;
@@ -84,7 +85,7 @@ public class masterClock {
 			var delta_average = (delta01 + delta02 + delta03 + delta04 + delta05) / 5; 
 			System.out.println("Average Delta Computed is: "+delta_average+" seconds");
 
-			// Assign new time
+			// Assign new time to the nodes
 			ts01.adjustTime(masterTime, delta_average);
 			ts02.adjustTime(masterTime, delta_average);
 			ts03.adjustTime(masterTime, delta_average);

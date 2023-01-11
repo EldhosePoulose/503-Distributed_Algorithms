@@ -1,3 +1,5 @@
+// used to monitor the clock updation
+
 package server;
 import java.rmi.*;
 import java.rmi.registry.*;

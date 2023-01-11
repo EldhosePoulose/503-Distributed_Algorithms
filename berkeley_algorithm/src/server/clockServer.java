@@ -1,4 +1,5 @@
 // This fetch the delta value of the clock and adjust the Time.
+// Here we get the clock values and do the calculation and update them.
 
 
 package server;
